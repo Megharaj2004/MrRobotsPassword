@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Robot's Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3498db, #e74c3c);
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            background-color: #2c3e50;
+            padding: 20px;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #password-box {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+
+        #error {
+            margin-top: 20px;
+            font-size: 18px;
+            color: red;
+        }
+
+        #message {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Mr. Robot's Password
+    </header>
+
+    <main>
+        <div id="password-box">
+            <p id="message">Enter password</p>
+            <input type="password" id="password">
+            <button onclick="validatePassword()">Go</button>
+            <div id="result"></div>
+            <div id="error"></div>
+        </div>
+    </main>
+
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var resultDiv = document.getElementById("result");
+            var errorDiv = document.getElementById("error");
+
+            // Reset messages
+            resultDiv.textContent = "";
+            errorDiv.textContent = "";
+
+            // Check password validity
+            if (password.length < 6 || !/\d/.test(password) || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || /\s/.test(password) || /[/]/.test(password)) {
+                errorDiv.textContent = "Password invalid";
+            } else {
+                resultDiv.textContent = "Password valid";
+            }
+        }
+    </script>
+</body>
+</html>
